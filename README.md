@@ -1,36 +1,36 @@
-# تحويل
+# أدوات تسهيل الوصول للمكفوفين
 
-تحويل is a web application that allows users to convert values between different units of measurement. The app provides a simple and intuitive interface for converting units such as length, weight, temperature, and more.
+أدوات تسهيل الوصول للمكفوفين هي تطبيق ويب يوفر معلومات وموارد حول التقنيات والأدوات المصممة لتحسين الوصول للأفراد ذوي الإعاقة البصرية.
 
-## Features
+## المزايا
 
-1. **Unit Conversion**
+1. **عنوان ووصف واضح**
+   - يعرض التطبيق عنوانًا واضحًا ووصفًا حول أدوات تسهيل الوصول للمكفوفين باللغة العربية.
+   - يتيح للمستخدمين فهم هدف التطبيق فورًا عند زيارته.
 
-   - Users can select a category (e.g., Length, Weight, Temperature).
-   - Input the value they wish to convert.
-   - Choose the units to convert from and to.
-   - Click the "Convert" button to see the result.
+2. **تجربة مستخدم بسيطة**
+   - تصميم بسيط وسهل الاستخدام يركز على توفير المعلومات بطريقة مباشرة وسلسة.
 
-## User Journey
+## خطوات استخدام التطبيق
 
-1. **Converting Units**
+1. **زيارة الصفحة الرئيسية**
+   - عند فتح التطبيق، سيتم عرض عنوان ووصف يشرحان هدف التطبيق باللغة العربية.
 
-   - **Step 1**: Open the app to access the conversion tool.
-   - **Step 2**: Select a conversion category from the dropdown (e.g., Length).
-   - **Step 3**: Enter the value you wish to convert.
-   - **Step 4**: Choose the units to convert from and to within the selected category.
-   - **Step 5**: Click the "Convert" button.
-   - **Step 6**: View the converted value displayed below the button.
+2. **استكشاف المحتوى**
+   - يمكن للمستخدم قراءة المعلومات المقدمة حول أدوات وتكنولوجيا تسهيل الوصول للمكفوفين.
 
-## Environment Variables
+3. **الاستفادة من الموارد**
+   - يمكن للمستخدمين استخدام المعلومات المقدمة للتعرف على التقنيات الحديثة وتطبيقها في حياتهم اليومية.
 
-The following environment variables need to be set:
+## المتطلبات البيئية
 
-- `VITE_PUBLIC_SENTRY_DSN`: Your Sentry DSN for error logging.
-- `VITE_PUBLIC_APP_ENV`: The current app environment (e.g., 'development', 'production').
-- `VITE_PUBLIC_APP_ID`: Your application ID used for PWA setup.
+يجب ضبط متغيرات البيئة التالية:
 
-## External Services Used
+- `VITE_PUBLIC_SENTRY_DSN`: DSN الخاص بـ Sentry لتسجيل الأخطاء.
+- `VITE_PUBLIC_APP_ENV`: بيئة التطبيق الحالية (مثل 'development'، 'production').
+- `VITE_PUBLIC_APP_ID`: معرف التطبيق المستخدم لإعداد PWA.
 
-- **Sentry**: Used for error logging on the frontend.
-- **Progressier**: Used for adding Progressive Web App (PWA) support to enable app-like features.
+## الخدمات الخارجية المستخدمة
+
+- **Sentry**: يستخدم لتسجيل الأخطاء على الواجهة الأمامية.
+- **Progressier**: يستخدم لإضافة دعم تطبيقات الويب التقدمية (PWA) لتمكين ميزات شبيهة بالتطبيقات.
