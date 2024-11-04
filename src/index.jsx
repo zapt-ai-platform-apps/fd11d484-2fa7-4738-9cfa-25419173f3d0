@@ -8,7 +8,6 @@ import * as Sentry from '@sentry/browser';
 Sentry.init({
   dsn: import.meta.env.VITE_PUBLIC_SENTRY_DSN,
   environment: import.meta.env.VITE_PUBLIC_APP_ENV,
-  integrations: [Sentry.browserTracingIntegration()],
   initialScope: {
     tags: {
       type: 'frontend',
@@ -20,7 +19,8 @@ Sentry.init({
 // إضافة دعم PWA للتطبيق (سيضيف هذا عامل خدمة وملف manifest، لا تحتاج إلى القيام بأي شيء آخر)
 window.progressierAppRuntimeSettings = {
   uid: import.meta.env.VITE_PUBLIC_APP_ID,
-  icon512: 'https://otebnzqfzytqyyjdfhzr.supabase.co/storage/v1/render/image/public/icons/d9859efc-5c69-44a6-bf7e-543676e82d29/bb3e8d31-3962-457e-a6c4-4fdaabb3e111.png?width=512&height=512',
+  icon512:
+    'https://otebnzqfzytqyyjdfhzr.supabase.co/storage/v1/render/image/public/icons/d9859efc-5c69-44a6-bf7e-543676e82d29/bb3e8d31-3962-457e-a6c4-4fdaabb3e111.png?width=512&height=512',
   name: 'أدوات إمكانية الوصول',
   shortName: 'أدوات إمكانية الوصول',
 };
