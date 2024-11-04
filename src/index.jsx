@@ -8,6 +8,7 @@ import * as Sentry from '@sentry/browser';
 Sentry.init({
   dsn: import.meta.env.VITE_PUBLIC_SENTRY_DSN,
   environment: import.meta.env.VITE_PUBLIC_APP_ENV,
+  integrations: [Sentry.browserTracingIntegration()],
   initialScope: {
     tags: {
       type: 'frontend',
@@ -20,8 +21,8 @@ Sentry.init({
 window.progressierAppRuntimeSettings = {
   uid: import.meta.env.VITE_PUBLIC_APP_ID,
   icon512: 'https://your-icon-url.com/icon.png',
-  name: 'أدوات تسهيل الوصول للمكفوفين',
-  shortName: 'أدوات تسهيل الوصول',
+  name: 'أدوات Blind accessibility',
+  shortName: 'أدوات Blind accessibility',
 };
 let script = document.createElement('script');
 script.setAttribute('src', 'https://progressier.app/your-app-id/script.js');
