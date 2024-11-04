@@ -1,5 +1,5 @@
 import { jokes } from '../drizzle/schema.js';
-import { authenticateUser } from "./_apiUtils.js"
+import { authenticateUser } from './_apiUtils.js';
 import { neon } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-http';
 import { eq } from 'drizzle-orm';
@@ -11,9 +11,9 @@ Sentry.init({
   initialScope: {
     tags: {
       type: 'backend',
-      projectId: process.env.PROJECT_ID
-    }
-  }
+      projectId: process.env.PROJECT_ID,
+    },
+  },
 });
 
 export default async function handler(req, res) {
@@ -24,7 +24,7 @@ export default async function handler(req, res) {
     }
 
     const user = await authenticateUser(req);
-    
+
     const sql = neon(process.env.NEON_DB_URL);
     const db = drizzle(sql);
 

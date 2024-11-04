@@ -1,5 +1,5 @@
 import { jokes } from '../drizzle/schema.js';
-import { authenticateUser } from "./_apiUtils.js"
+import { authenticateUser } from './_apiUtils.js';
 import { neon } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-http';
 import * as Sentry from '@sentry/node';
@@ -10,9 +10,9 @@ Sentry.init({
   initialScope: {
     tags: {
       type: 'backend',
-      projectId: process.env.PROJECT_ID
-    }
-  }
+      projectId: process.env.PROJECT_ID,
+    },
+  },
 });
 
 export default async function handler(req, res) {
@@ -29,14 +29,14 @@ export default async function handler(req, res) {
     if (!setup || !punchline) {
       return res.status(400).json({ error: 'Setup and punchline are required' });
     }
-    
+
     const sql = neon(process.env.NEON_DB_URL);
     const db = drizzle(sql);
 
-    const result = await db.insert(jokes).values({ 
-      setup, 
+    const result = await db.insert(jokes).values({
+      setup,
       punchline,
-      userId: user.id
+      userId: user.id,
     }).returning();
 
     res.status(201).json(result[0]);
