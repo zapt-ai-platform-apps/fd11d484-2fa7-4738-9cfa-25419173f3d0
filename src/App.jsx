@@ -4,7 +4,7 @@ function App() {
       <main class="max-w-4xl mx-auto h-full">
         <h1 class="text-4xl font-bold text-purple-600 mb-4">أدوات Blind accessibility</h1>
         <p class="text-lg text-gray-700 leading-relaxed">
-          أدوات الوصول للمكفوفين هي خطوة نحو تمكين الجميع. اكتشف كيف يمكن لهذه الأدوات أن تفتح عالماً من الفرص وتكسر الحواجز أمام الأشخاص ذوي الإعاقة البصرية.
+          اكتشف كيف تمكّن أدوات الوصول للمكفوفين الأشخاص ذوي الإعاقة البصرية.
         </p>
       </main>
     </div>
