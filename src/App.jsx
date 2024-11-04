@@ -2,11 +2,9 @@ import { For } from 'solid-js';
 
 function App() {
   const tools = [
-    'قارئ الشاشة المتقدم',
-    'تكبير النص والصور',
-    'تحكم في تباين الألوان',
-    'تحويل النص إلى كلام',
-    'اختصارات لوحة المفاتيح المخصصة',
+    'قارئ الشاشة',
+    'تكبير المحتوى',
+    'تعديل الألوان',
   ];
 
   return (
@@ -16,11 +14,8 @@ function App() {
     >
       <main class="max-w-4xl mx-auto h-full flex flex-col justify-center items-center">
         <h1 class="text-5xl font-extrabold text-orange-600 mb-6">
-          أدوات الوصول لذوي الإعاقة البصرية
+          أدوات إمكانية الوصول
         </h1>
-        <p class="text-2xl text-gray-700 mb-8 text-center">
-          نقدم لك مجموعة من الأدوات التي تسهل تجربة التصفح وتجعله أكثر سهولة ويسراً.
-        </p>
         <ul class="list-disc text-xl text-gray-700 mb-8">
           <For each={tools}>
             {(tool) => (
