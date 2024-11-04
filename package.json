@@ -1,7 +1,7 @@
 {
   "name": "new-app",
   "version": "1.0.0",
-  "description": "Web application for blind accessibility tools",
+  "description": "Web application for أدوات Blind Accessibility",
   "type": "module",
   "scripts": {
     "dev": "vite",

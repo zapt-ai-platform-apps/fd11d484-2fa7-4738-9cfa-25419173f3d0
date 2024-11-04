@@ -1,11 +1,11 @@
-# New App
+# أدوات Blind Accessibility
 
-New App is a web application that provides information and resources about tools designed to enhance accessibility for visually impaired individuals. The app aims to educate users on various technologies and methods that improve digital accessibility for the blind.
+أدوات Blind Accessibility is a web application that provides information and resources about tools designed to enhance accessibility for visually impaired individuals. The app aims to educate users on various technologies and methods that improve digital accessibility for the blind.
 
 ## Features
 
 1. **Informative Title and Description**
-   - The app displays a clear title and description about blind accessibility tools.
+   - The app displays a clear title and description about blind accessibility tools in both Arabic and English.
    - Users understand the purpose of the app immediately upon visiting.
 
 ## Environment Variables
