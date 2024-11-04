@@ -1,3 +1,5 @@
+import SocialLinks from './components/SocialLinks';
+
 function App() {
   return (
     <div
@@ -11,6 +13,7 @@ function App() {
         <p class="text-xl text-gray-700 leading-relaxed">
           مرحبًا بك في <strong>"تبادل المعلومات التقنية للمكفوفين"</strong>! اكتشف عالم التقنية، تواصل، وتعلم معنا. انضم الآن وانطلق نحو مستقبل مشرق!
         </p>
+        <SocialLinks />
       </main>
     </div>
   );
