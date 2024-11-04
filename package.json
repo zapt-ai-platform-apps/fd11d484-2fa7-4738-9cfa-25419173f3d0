@@ -1,7 +1,7 @@
 {
-  "name": "tech-exchange-for-the-blind",
+  "name": "tech-exchange",
   "version": "1.0.0",
-  "description": "تطبيق تبادل المعلومات التقنية للمكفوفين",
+  "description": "تطبيق تبادل المعلومات التقنية",
   "type": "module",
   "scripts": {
     "dev": "vite",
