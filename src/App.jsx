@@ -6,7 +6,7 @@ function App() {
     >
       <main class="max-w-4xl mx-auto h-full flex flex-col justify-center items-center text-center">
         <h1 class="text-5xl font-extrabold text-orange-600 mb-6">
-          New App
+          لتبادل المعلومات التقنية
         </h1>
       </main>
     </div>
