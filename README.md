@@ -49,3 +49,8 @@ New App is a web application that allows users to create, view, and save jokes. 
 9. **Sign Out**
    - The user can sign out by clicking the "Sign Out" button.
    - The user is redirected to the login page.
+
+## External APIs Used
+
+- **ZAPT AI**: Used for authentication and event handling such as generating jokes, images, text-to-speech, and markdown stories.
+- **Sentry**: Used for error logging on both frontend and backend.

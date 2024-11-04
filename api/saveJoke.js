@@ -5,8 +5,8 @@ import { drizzle } from 'drizzle-orm/neon-http';
 import * as Sentry from '@sentry/node';
 
 Sentry.init({
-  dsn: process.env.SENTRY_DSN,
-  environment: process.env.APP_ENV,
+  dsn: process.env.VITE_PUBLIC_SENTRY_DSN,
+  environment: process.env.VITE_PUBLIC_APP_ENV,
 });
 
 Sentry.configureScope((scope) => {

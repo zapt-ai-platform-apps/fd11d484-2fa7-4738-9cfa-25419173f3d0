@@ -19,6 +19,9 @@ function App() {
     if (user) {
       setUser(user);
       setCurrentPage('homePage');
+    } else {
+      setUser(null);
+      setCurrentPage('login');
     }
   };
 
