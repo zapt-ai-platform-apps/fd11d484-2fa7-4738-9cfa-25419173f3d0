@@ -1,5 +1,5 @@
 import { AiFillYoutube, AiFillFacebook } from 'solid-icons/ai';
-import { FaTelegramPlane } from 'solid-icons/fa';
+import { SiTelegram } from 'solid-icons/si';
 
 function SocialLinks() {
   return (
@@ -12,7 +12,7 @@ function SocialLinks() {
           rel="noopener noreferrer"
           class="flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg cursor-pointer transition duration-300 ease-in-out transform hover:scale-105"
         >
-          <FaTelegramPlane size={24} class="ml-2" />
+          <SiTelegram size={24} class="ml-2" />
           قناة تبادل المعلومات التقنية
         </a>
         <a
@@ -21,7 +21,7 @@ function SocialLinks() {
           rel="noopener noreferrer"
           class="flex items-center justify-center bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded-lg cursor-pointer transition duration-300 ease-in-out transform hover:scale-105"
         >
-          <FaTelegramPlane size={24} class="ml-2" />
+          <SiTelegram size={24} class="ml-2" />
           مجموعتنا على Telegram
         </a>
         <a
