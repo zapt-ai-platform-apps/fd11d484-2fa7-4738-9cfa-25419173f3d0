@@ -21,8 +21,8 @@ Sentry.init({
 window.progressierAppRuntimeSettings = {
   uid: import.meta.env.VITE_PUBLIC_APP_ID,
   icon512: 'https://otebnzqfzytqyyjdfhzr.supabase.co/storage/v1/render/image/public/icons/d9859efc-5c69-44a6-bf7e-543676e82d29/bb3e8d31-3962-457e-a6c4-4fdaabb3e111.png?width=512&height=512',
-  name: 'New App',
-  shortName: 'New App',
+  name: 'أدوات Blind Accessibility',
+  shortName: 'أدوات Blind Accessibility',
 };
 let script = document.createElement('script');
 script.setAttribute('src', 'https://progressier.app/z8yY3IKmfpDIw3mSncPh/script.js');
