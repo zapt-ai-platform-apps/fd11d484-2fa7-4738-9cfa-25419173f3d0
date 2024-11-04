@@ -8,6 +8,7 @@ import * as Sentry from '@sentry/browser';
 Sentry.init({
   dsn: import.meta.env.VITE_PUBLIC_SENTRY_DSN,
   environment: import.meta.env.VITE_PUBLIC_APP_ENV,
+  integrations: [Sentry.browserTracingIntegration()],
   initialScope: {
     tags: {
       type: 'frontend',
@@ -16,12 +17,12 @@ Sentry.init({
   },
 });
 
-// Add PWA support to the app (this will add a service worker and a manifest file, you don't need to do anything else)
+// Add PWA support to the app
 window.progressierAppRuntimeSettings = {
   uid: import.meta.env.VITE_PUBLIC_APP_ID,
   icon512: 'https://your-icon-url.com/icon.png',
-  name: 'أدوات Blind Accessibility',
-  shortName: 'أدوات Blind Accessibility',
+  name: 'تحويل',
+  shortName: 'تحويل',
 };
 let script = document.createElement('script');
 script.setAttribute('src', 'https://progressier.app/your-app-id/script.js');

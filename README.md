@@ -1,12 +1,26 @@
-# أدوات Blind Accessibility
+# تحويل
 
-أدوات Blind Accessibility is a web application that provides information and resources about tools designed to enhance accessibility for visually impaired individuals. The app aims to educate users on various technologies and methods that improve digital accessibility for the blind.
+تحويل is a web application that allows users to convert values between different units of measurement. The app provides a simple and intuitive interface for converting units such as length, weight, temperature, and more.
 
 ## Features
 
-1. **Informative Title and Description**
-   - The app displays a clear title and description about blind accessibility tools in both Arabic and English.
-   - Users understand the purpose of the app immediately upon visiting.
+1. **Unit Conversion**
+
+   - Users can select a category (e.g., Length, Weight, Temperature).
+   - Input the value they wish to convert.
+   - Choose the units to convert from and to.
+   - Click the "Convert" button to see the result.
+
+## User Journey
+
+1. **Converting Units**
+
+   - **Step 1**: Open the app to access the conversion tool.
+   - **Step 2**: Select a conversion category from the dropdown (e.g., Length).
+   - **Step 3**: Enter the value you wish to convert.
+   - **Step 4**: Choose the units to convert from and to within the selected category.
+   - **Step 5**: Click the "Convert" button.
+   - **Step 6**: View the converted value displayed below the button.
 
 ## Environment Variables
 

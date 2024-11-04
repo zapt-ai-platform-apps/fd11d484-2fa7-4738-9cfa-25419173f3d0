@@ -1,7 +1,7 @@
 {
-  "name": "new-app",
+  "name": "tahweel",
   "version": "1.0.0",
-  "description": "Web application for أدوات Blind Accessibility",
+  "description": "Web application for تحويل (Conversion Tool)",
   "type": "module",
   "scripts": {
     "dev": "vite",
