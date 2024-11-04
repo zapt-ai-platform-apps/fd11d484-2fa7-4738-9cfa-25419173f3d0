@@ -1,7 +1,7 @@
 {
-  "name": "blind-accessibility-tools",
+  "name": "accessibility-tools",
   "version": "1.0.0",
-  "description": "تطبيق ويب لأدوات إمكانية الوصول للمكفوفين",
+  "description": "تطبيق ويب لأدوات إمكانية الوصول",
   "type": "module",
   "scripts": {
     "dev": "vite",

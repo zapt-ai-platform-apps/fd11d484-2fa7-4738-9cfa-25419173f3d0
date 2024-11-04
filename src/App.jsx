@@ -1,12 +1,4 @@
-import { For } from 'solid-js';
-
 function App() {
-  const tools = [
-    'قارئ الشاشة',
-    'تكبير المحتوى',
-    'تعديل الألوان',
-  ];
-
   return (
     <div
       dir="rtl"
@@ -16,13 +8,6 @@ function App() {
         <h1 class="text-5xl font-extrabold text-orange-600 mb-6">
           أدوات إمكانية الوصول
         </h1>
-        <ul class="list-disc text-xl text-gray-700 mb-8">
-          <For each={tools}>
-            {(tool) => (
-              <li class="mb-2">{tool}</li>
-            )}
-          </For>
-        </ul>
       </main>
     </div>
   );
