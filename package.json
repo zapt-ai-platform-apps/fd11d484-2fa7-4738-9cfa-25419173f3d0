@@ -1,7 +1,7 @@
 {
   "name": "new-app",
   "version": "1.0.0",
-  "description": "تطبيق ويب يعزز الوعي بأهمية أدوات تسهيل الوصول للمكفوفين",
+  "description": "تطبيق ويب",
   "type": "module",
   "scripts": {
     "dev": "vite",
