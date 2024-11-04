@@ -8,6 +8,7 @@ import * as Sentry from '@sentry/browser';
 Sentry.init({
   dsn: import.meta.env.VITE_PUBLIC_SENTRY_DSN,
   environment: import.meta.env.VITE_PUBLIC_APP_ENV,
+  integrations: [Sentry.browserTracingIntegration()],
   initialScope: {
     tags: {
       type: 'frontend',
@@ -16,7 +17,7 @@ Sentry.init({
   },
 });
 
-// إضافة دعم PWA للتطبيق (سيضيف هذا عامل خدمة وملف manifest، لا تحتاج إلى القيام بأي شيء آخر)
+// إضافة دعم PWA للتطبيق
 window.progressierAppRuntimeSettings = {
   uid: import.meta.env.VITE_PUBLIC_APP_ID,
   icon512:

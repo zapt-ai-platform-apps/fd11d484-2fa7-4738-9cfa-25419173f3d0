@@ -1,5 +1,5 @@
 {
-  "name": "تبادل المعلومات التقنية للمكفوفين",
+  "name": "tech-exchange-for-the-blind",
   "version": "1.0.0",
   "description": "تطبيق تبادل المعلومات التقنية للمكفوفين",
   "type": "module",
@@ -10,14 +10,14 @@
   },
   "dependencies": {
     "solid-js": "^1.8.22",
-    "tailwindcss": "^3.4.13",
-    "@sentry/browser": "^8.35.0",
-    "solid-icons": "^1.0.12"
+    "solid-icons": "^1.0.12",
+    "@sentry/browser": "^8.35.0"
   },
   "devDependencies": {
     "vite": "^5.4.7",
     "vite-plugin-solid": "^2.10.2",
+    "postcss": "^8.4.24",
     "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.24"
+    "tailwindcss": "^3.4.13"
   }
 }
