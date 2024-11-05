@@ -8,7 +8,7 @@ function App() {
       dir="rtl"
       class="min-h-screen bg-gradient-to-br from-yellow-100 to-orange-200 p-4 text-gray-800"
     >
-      <main class="h-full max-w-4xl mx-auto flex flex-col justify-center items-center text-center">
+      <main class="h-full max-w-4xl mx-auto flex flex-col justify-center items-center text-center space-y-6">
         <h1 class="text-5xl font-extrabold text-orange-600 mb-6">
           تبادل المعلومات التقنية
         </h1>

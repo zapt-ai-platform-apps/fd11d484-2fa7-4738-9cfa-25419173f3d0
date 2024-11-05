@@ -1,6 +1,6 @@
-import { createSignal, onCleanup } from 'solid-js';
+import { createSignal, onCleanup, Show } from 'solid-js';
 import { createEvent } from '../supabaseClient';
-import { Show } from 'solid-js/web';
+import { SolidMarkdown } from 'solid-markdown';
 
 function Assistant() {
   const [inputValue, setInputValue] = createSignal('');
@@ -106,6 +106,11 @@ function Assistant() {
       audio.onended = () => {
         setIsAudioPlaying(false);
       };
+
+      audio.onerror = () => {
+        console.error('Error playing audio');
+        setIsAudioPlaying(false);
+      };
     } catch (error) {
       console.error('Error:', error);
     } finally {
@@ -135,7 +140,7 @@ function Assistant() {
   });
 
   return (
-    <div class="mt-8">
+    <div class="mt-8 w-full">
       <h2 class="text-2xl font-bold text-orange-600 mb-4">مساعد الذكاء الاصطناعي</h2>
       <div class="space-y-4">
         <div class="flex items-center">
@@ -177,9 +182,16 @@ function Assistant() {
             </button>
           </Show>
         </div>
+
+        <Show when={isLoading()}>
+          <div class="flex justify-center items-center mt-4">
+            <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-orange-500"></div>
+          </div>
+        </Show>
+
         <Show when={assistantResponse()}>
           <div class="mt-4 bg-white p-4 rounded-lg shadow-md">
-            <p class="text-gray-700 leading-relaxed">{assistantResponse()}</p>
+            <SolidMarkdown class="text-gray-700 leading-relaxed" children={assistantResponse()} />
           </div>
           <button
             onClick={handleTextToSpeech}

@@ -3,7 +3,7 @@ import { SiTelegram } from 'solid-icons/si';
 
 function SocialLinks() {
   return (
-    <div class="mt-8">
+    <div class="mt-8 w-full">
       <h2 class="text-2xl font-bold text-orange-600 mb-4">تواصل معنا</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <a
@@ -11,6 +11,7 @@ function SocialLinks() {
           target="_blank"
           rel="noopener noreferrer"
           class="flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg cursor-pointer transition duration-300 ease-in-out transform hover:scale-105"
+          aria-label="قناة تبادل المعلومات التقنية على Telegram"
         >
           <SiTelegram size={24} class="ml-2" />
           قناة تبادل المعلومات التقنية
@@ -20,6 +21,7 @@ function SocialLinks() {
           target="_blank"
           rel="noopener noreferrer"
           class="flex items-center justify-center bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded-lg cursor-pointer transition duration-300 ease-in-out transform hover:scale-105"
+          aria-label="مجموعتنا على Telegram"
         >
           <SiTelegram size={24} class="ml-2" />
           مجموعتنا على Telegram
@@ -29,6 +31,7 @@ function SocialLinks() {
           target="_blank"
           rel="noopener noreferrer"
           class="flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg cursor-pointer transition duration-300 ease-in-out transform hover:scale-105"
+          aria-label="قناتنا على YouTube"
         >
           <AiFillYoutube size={24} class="ml-2" />
           قناتنا على YouTube
@@ -38,6 +41,7 @@ function SocialLinks() {
           target="_blank"
           rel="noopener noreferrer"
           class="flex items-center justify-center bg-blue-800 hover:bg-blue-900 text-white font-semibold py-2 px-4 rounded-lg cursor-pointer transition duration-300 ease-in-out transform hover:scale-105"
+          aria-label="مجموعتنا على Facebook"
         >
           <AiFillFacebook size={24} class="ml-2" />
           مجموعتنا على Facebook
