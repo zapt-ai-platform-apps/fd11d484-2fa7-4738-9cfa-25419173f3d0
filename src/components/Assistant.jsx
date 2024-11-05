@@ -8,6 +8,7 @@ function Assistant() {
   const [isLoading, setIsLoading] = createSignal(false);
   const [isRecording, setIsRecording] = createSignal(false);
   const [isCancelled, setIsCancelled] = createSignal(false);
+  const [isAudioPlaying, setIsAudioPlaying] = createSignal(false);
 
   let recognition;
   let audio;
@@ -66,7 +67,6 @@ function Assistant() {
       }
     } catch (error) {
       if (isCancelled()) {
-        // تم إلغاء الطلب، لا تحتاج لإظهار خطأ
         console.log('تم إلغاء الطلب');
       } else {
         console.error('Error:', error);
@@ -78,6 +78,16 @@ function Assistant() {
 
   const handleTextToSpeech = async () => {
     if (!assistantResponse()) return;
+
+    if (isAudioPlaying()) {
+      if (audio) {
+        audio.pause();
+        audio = null;
+      }
+      setIsAudioPlaying(false);
+      return;
+    }
+
     setIsLoading(true);
     try {
       const response = await createEvent('text_to_speech', {
@@ -89,6 +99,11 @@ function Assistant() {
       }
       audio = new Audio(response);
       audio.play();
+      setIsAudioPlaying(true);
+
+      audio.onended = () => {
+        setIsAudioPlaying(false);
+      };
     } catch (error) {
       console.error('Error:', error);
     } finally {
@@ -100,6 +115,11 @@ function Assistant() {
     setIsCancelled(true);
     setIsLoading(false);
     setAssistantResponse('');
+    if (audio) {
+      audio.pause();
+      audio = null;
+      setIsAudioPlaying(false);
+    }
   };
 
   onCleanup(() => {
@@ -161,13 +181,15 @@ function Assistant() {
           </div>
           <button
             onClick={handleTextToSpeech}
-            class={`mt-4 px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer ${
+            class={`mt-4 px-6 py-3 ${
+              isAudioPlaying() ? 'bg-red-500 hover:bg-red-600' : 'bg-green-500 hover:bg-green-600'
+            } text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer ${
               isLoading() ? 'opacity-50 cursor-not-allowed' : ''
             }`}
             disabled={isLoading()}
           >
-            <Show when={!isLoading()} fallback="...جاري التحويل">
-              استمع للإجابة
+            <Show when={!isLoading()} fallback="...جاري المعالجة">
+              {isAudioPlaying() ? 'إيقاف' : 'استمع للإجابة'}
             </Show>
           </button>
         </Show>
