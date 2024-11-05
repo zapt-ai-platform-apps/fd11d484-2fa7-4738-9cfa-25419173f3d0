@@ -1,4 +1,5 @@
 import { render } from 'solid-js/web';
+import { Router } from '@solidjs/router';
 import App from './App';
 import './index.css';
 
@@ -29,4 +30,8 @@ script.setAttribute('src', 'https://progressier.app/z8yY3IKmfpDIw3mSncPh/script.
 script.setAttribute('defer', 'true');
 document.querySelector('head').appendChild(script);
 
-render(() => <App />, document.getElementById('root'));
+render(() => (
+  <Router>
+    <App />
+  </Router>
+), document.getElementById('root'));
