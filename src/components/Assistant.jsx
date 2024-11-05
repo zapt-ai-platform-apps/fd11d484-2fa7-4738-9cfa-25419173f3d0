@@ -1,4 +1,4 @@
-import { createSignal, onCleanup, createEffect } from 'solid-js';
+import { createSignal, onCleanup } from 'solid-js';
 import { createEvent } from '../supabaseClient';
 import { Show } from 'solid-js/web';
 
@@ -7,18 +7,20 @@ function Assistant() {
   const [assistantResponse, setAssistantResponse] = createSignal('');
   const [isLoading, setIsLoading] = createSignal(false);
   const [isRecording, setIsRecording] = createSignal(false);
-  const [audioUrl, setAudioUrl] = createSignal('');
 
   let recognition;
-  let audioRef;
+  let audio;
 
   const handleVoiceInput = () => {
-    if (!('webkitSpeechRecognition' in window)) {
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
       alert('متصفحك لا يدعم ميزة التعرف على الصوت');
       return;
     }
 
-    recognition = new window.webkitSpeechRecognition();
+    recognition = new SpeechRecognition();
     recognition.lang = 'ar-SA';
     recognition.continuous = false;
     recognition.interimResults = false;
@@ -51,7 +53,6 @@ function Assistant() {
     if (!inputValue()) return;
     setIsLoading(true);
     setAssistantResponse('');
-    setAudioUrl('');
     try {
       const response = await createEvent('chatgpt_request', {
         prompt: inputValue(),
@@ -73,7 +74,12 @@ function Assistant() {
       const response = await createEvent('text_to_speech', {
         text: assistantResponse(),
       });
-      setAudioUrl(response);
+      if (audio) {
+        audio.pause();
+        audio = null;
+      }
+      audio = new Audio(response);
+      audio.play();
     } catch (error) {
       console.error('Error:', error);
     } finally {
@@ -81,15 +87,13 @@ function Assistant() {
     }
   };
 
-  createEffect(() => {
-    if (audioUrl() && audioRef) {
-      audioRef.play();
-    }
-  });
-
   onCleanup(() => {
     if (recognition) {
       recognition.stop();
+    }
+    if (audio) {
+      audio.pause();
+      audio = null;
     }
   });
 
@@ -100,7 +104,7 @@ function Assistant() {
         <div class="flex items-center">
           <input
             type="text"
-            class="flex-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent box-border"
+            class="flex-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent box-border text-gray-800"
             placeholder="اكتب سؤالك هنا..."
             value={inputValue()}
             onInput={(e) => setInputValue(e.target.value)}
@@ -143,13 +147,6 @@ function Assistant() {
               استمع للإجابة
             </Show>
           </button>
-        </Show>
-        <Show when={audioUrl()}>
-          <audio
-            ref={audioRef}
-            src={audioUrl()}
-            class="w-full mt-4"
-          />
         </Show>
       </div>
     </div>
