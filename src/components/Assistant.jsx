@@ -9,7 +9,6 @@ function Assistant() {
   const [isRecording, setIsRecording] = createSignal(false);
   const [isCancelled, setIsCancelled] = createSignal(false);
   const [isAudioPlaying, setIsAudioPlaying] = createSignal(false);
-  const [errorMessage, setErrorMessage] = createSignal('');
 
   let recognition;
   let audio;
@@ -39,7 +38,6 @@ function Assistant() {
     recognition.onerror = (event) => {
       console.error(event.error);
       setIsRecording(false);
-      setErrorMessage('حدث خطأ أثناء التعرف على الصوت. الرجاء المحاولة مرة أخرى.');
     };
 
     recognition.onend = () => {
@@ -56,7 +54,6 @@ function Assistant() {
     if (!inputValue()) return;
     setIsLoading(true);
     setAssistantResponse('');
-    setErrorMessage('');
     setIsCancelled(false);
 
     try {
@@ -73,7 +70,6 @@ function Assistant() {
         console.log('تم إلغاء الطلب');
       } else {
         console.error('Error:', error);
-        setErrorMessage('حدث خطأ أثناء معالجة طلبك. الرجاء المحاولة مرة أخرى.');
       }
     } finally {
       setIsLoading(false);
@@ -93,7 +89,6 @@ function Assistant() {
     }
 
     setIsLoading(true);
-    setErrorMessage('');
     try {
       const response = await createEvent('text_to_speech', {
         text: assistantResponse(),
@@ -111,7 +106,6 @@ function Assistant() {
       };
     } catch (error) {
       console.error('Error:', error);
-      setErrorMessage('حدث خطأ أثناء تحويل النص إلى كلام.');
     } finally {
       setIsLoading(false);
     }
@@ -149,21 +143,17 @@ function Assistant() {
             placeholder="اكتب سؤالك هنا..."
             value={inputValue()}
             onInput={(e) => setInputValue(e.target.value)}
-            disabled={isRecording() || isLoading()}
           />
           <button
             onClick={handleVoiceInput}
-            class={`ml-2 p-3 ${
-              isRecording() ? 'bg-red-500 hover:bg-red-600' : 'bg-blue-500 hover:bg-blue-600'
-            } text-white rounded-full transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer`}
-            disabled={isLoading()}
+            class={`ml-2 p-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer ${
+              isRecording() ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
+            disabled={isRecording()}
           >
-            {isRecording() ? '⏹' : '🎤'}
+            🎤
           </button>
         </div>
-        <Show when={isRecording()}>
-          <div class="mt-2 text-blue-600">...جاري التسجيل</div>
-        </Show>
         <div class="flex space-x-4 rtl:space-x-reverse">
           <button
             onClick={handleSendQuery}
@@ -185,11 +175,6 @@ function Assistant() {
             </button>
           </Show>
         </div>
-        <Show when={errorMessage()}>
-          <div class="mt-4 bg-red-100 text-red-700 p-4 rounded-lg">
-            {errorMessage()}
-          </div>
-        </Show>
         <Show when={assistantResponse()}>
           <div class="mt-4 bg-white p-4 rounded-lg shadow-md">
             <p class="text-gray-700 leading-relaxed">{assistantResponse()}</p>
