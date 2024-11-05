@@ -56,7 +56,7 @@ function Assistant() {
     setIsLoading(true);
     setAssistantResponse('');
     setIsCancelled(false);
-    setInputValue(''); // مسح المحتوى المكتوب بعد الإرسال
+    setInputValue('');
 
     try {
       const response = await createEvent('chatgpt_request', {

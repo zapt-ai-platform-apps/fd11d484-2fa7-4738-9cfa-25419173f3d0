@@ -1,11 +1,12 @@
 import SocialLinks from './components/SocialLinks';
 import Assistant from './components/Assistant';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <div
       dir="rtl"
-      class="h-full bg-gradient-to-br from-yellow-100 to-orange-200 p-4 text-gray-800"
+      class="min-h-screen bg-gradient-to-br from-yellow-100 to-orange-200 p-4 text-gray-800"
     >
       <main class="h-full max-w-4xl mx-auto flex flex-col justify-center items-center text-center">
         <h1 class="text-5xl font-extrabold text-orange-600 mb-6">
@@ -17,6 +18,7 @@ function App() {
         <SocialLinks />
         <Assistant />
       </main>
+      <Footer />
     </div>
   );
 }
