@@ -5,7 +5,6 @@ import { SolidMarkdown } from 'solid-markdown';
 function Translator() {
   const [inputText, setInputText] = createSignal('');
   const [translatedText, setTranslatedText] = createSignal('');
-  const [sourceLang, setSourceLang] = createSignal('ar');
   const [targetLang, setTargetLang] = createSignal('en');
   const [isLoading, setIsLoading] = createSignal(false);
   const [isCancelled, setIsCancelled] = createSignal(false);
@@ -19,9 +18,7 @@ function Translator() {
     setIsCancelled(false);
     setTranslatedText('');
 
-    const prompt = `ترجم النص التالي من ${getLanguageName(sourceLang())} إلى ${getLanguageName(
-      targetLang()
-    )}: ${inputText()}\n\nالترجمة:`;
+    const prompt = `ترجم النص التالي إلى ${getLanguageName(targetLang())}: ${inputText()}\n\nالترجمة:`;
 
     try {
       const response = await createEvent('chatgpt_request', {
@@ -130,26 +127,7 @@ function Translator() {
           onInput={(e) => setInputText(e.target.value)}
         />
 
-        <div class="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 rtl:sm:space-x-reverse">
-          <div class="flex-1">
-            <label class="font-semibold text-gray-700">لغة المصدر:</label>
-            <select
-              value={sourceLang()}
-              onChange={(e) => setSourceLang(e.target.value)}
-              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent cursor-pointer mt-1"
-            >
-              <option value="ar">العربية</option>
-              <option value="en">الإنجليزية</option>
-              <option value="fr">الفرنسية</option>
-              <option value="es">الإسبانية</option>
-              <option value="de">الألمانية</option>
-              <option value="zh">الصينية</option>
-              <option value="ru">الروسية</option>
-              <option value="ja">اليابانية</option>
-              <option value="pt">البرتغالية</option>
-              <option value="hi">الهندية</option>
-            </select>
-          </div>
+        <div class="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0">
           <div class="flex-1">
             <label class="font-semibold text-gray-700">لغة الهدف:</label>
             <select
