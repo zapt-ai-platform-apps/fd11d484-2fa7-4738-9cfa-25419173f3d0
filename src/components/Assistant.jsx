@@ -7,13 +7,13 @@ function Assistant() {
   const [assistantResponse, setAssistantResponse] = createSignal('');
   const [isLoading, setIsLoading] = createSignal(false);
   const [isRecording, setIsRecording] = createSignal(false);
+  const [isCancelled, setIsCancelled] = createSignal(false);
 
   let recognition;
   let audio;
 
   const handleVoiceInput = () => {
-    const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
     if (!SpeechRecognition) {
       alert('متصفحك لا يدعم ميزة التعرف على الصوت');
@@ -53,15 +53,24 @@ function Assistant() {
     if (!inputValue()) return;
     setIsLoading(true);
     setAssistantResponse('');
+    setIsCancelled(false);
+
     try {
       const response = await createEvent('chatgpt_request', {
         prompt: inputValue(),
         response_type: 'text',
       });
 
-      setAssistantResponse(response);
+      if (!isCancelled()) {
+        setAssistantResponse(response);
+      }
     } catch (error) {
-      console.error('Error:', error);
+      if (isCancelled()) {
+        // تم إلغاء الطلب، لا تحتاج لإظهار خطأ
+        console.log('تم إلغاء الطلب');
+      } else {
+        console.error('Error:', error);
+      }
     } finally {
       setIsLoading(false);
     }
@@ -85,6 +94,12 @@ function Assistant() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleStop = () => {
+    setIsCancelled(true);
+    setIsLoading(false);
+    setAssistantResponse('');
   };
 
   onCleanup(() => {
@@ -131,6 +146,14 @@ function Assistant() {
               إرسال
             </Show>
           </button>
+          <Show when={isLoading()}>
+            <button
+              onClick={handleStop}
+              class="flex-1 px-6 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer"
+            >
+              إيقاف
+            </button>
+          </Show>
         </div>
         <Show when={assistantResponse()}>
           <div class="mt-4 bg-white p-4 rounded-lg shadow-md">
