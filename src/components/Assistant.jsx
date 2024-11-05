@@ -1,4 +1,4 @@
-import { createSignal, onCleanup } from 'solid-js';
+import { createSignal, onCleanup, createEffect } from 'solid-js';
 import { createEvent } from '../supabaseClient';
 import { Show } from 'solid-js/web';
 
@@ -10,6 +10,7 @@ function Assistant() {
   const [audioUrl, setAudioUrl] = createSignal('');
 
   let recognition;
+  let audioRef;
 
   const handleVoiceInput = () => {
     if (!('webkitSpeechRecognition' in window)) {
@@ -80,6 +81,12 @@ function Assistant() {
     }
   };
 
+  createEffect(() => {
+    if (audioUrl() && audioRef) {
+      audioRef.play();
+    }
+  });
+
   onCleanup(() => {
     if (recognition) {
       recognition.stop();
@@ -138,7 +145,11 @@ function Assistant() {
           </button>
         </Show>
         <Show when={audioUrl()}>
-          <audio controls src={audioUrl()} class="w-full mt-4" />
+          <audio
+            ref={audioRef}
+            src={audioUrl()}
+            class="w-full mt-4"
+          />
         </Show>
       </div>
     </div>
