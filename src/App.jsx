@@ -1,6 +1,7 @@
 import { Routes, Route, Link } from '@solidjs/router';
 import SocialLinks from './components/SocialLinks';
 import Assistant from './components/Assistant';
+import Translator from './components/Translator';
 import RadioPlayer from './components/RadioPlayer';
 import Footer from './components/Footer';
 import AboutUs from './components/AboutUs';
@@ -33,6 +34,7 @@ function App() {
                 </p>
                 <SocialLinks />
                 <RadioPlayer />
+                <Translator />
                 <Assistant />
               </>
             }

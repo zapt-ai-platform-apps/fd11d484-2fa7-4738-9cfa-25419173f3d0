@@ -9,6 +9,7 @@ import * as Sentry from '@sentry/browser';
 Sentry.init({
   dsn: import.meta.env.VITE_PUBLIC_SENTRY_DSN,
   environment: import.meta.env.VITE_PUBLIC_APP_ENV,
+  integrations: [Sentry.browserTracingIntegration()],
   initialScope: {
     tags: {
       type: 'frontend',
@@ -30,8 +31,11 @@ script.setAttribute('src', 'https://progressier.app/z8yY3IKmfpDIw3mSncPh/script.
 script.setAttribute('defer', 'true');
 document.querySelector('head').appendChild(script);
 
-render(() => (
-  <Router>
-    <App />
-  </Router>
-), document.getElementById('root'));
+render(
+  () => (
+    <Router>
+      <App />
+    </Router>
+  ),
+  document.getElementById('root')
+);
