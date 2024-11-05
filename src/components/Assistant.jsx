@@ -52,13 +52,15 @@ function Assistant() {
 
   const handleSendQuery = async () => {
     if (!inputValue()) return;
+    const query = inputValue();
     setIsLoading(true);
     setAssistantResponse('');
     setIsCancelled(false);
+    setInputValue(''); // مسح المحتوى المكتوب بعد الإرسال
 
     try {
       const response = await createEvent('chatgpt_request', {
-        prompt: inputValue(),
+        prompt: query,
         response_type: 'text',
       });
 
