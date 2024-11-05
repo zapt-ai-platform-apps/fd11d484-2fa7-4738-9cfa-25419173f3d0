@@ -1,5 +1,6 @@
 import SocialLinks from './components/SocialLinks';
 import Assistant from './components/Assistant';
+import RadioPlayer from './components/RadioPlayer';
 import Footer from './components/Footer';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           مرحبًا بك في <strong>"تبادل المعلومات التقنية"</strong>! اكتشف عالم التقنية، تواصل، وتعلم معنا. انضم الآن وانطلق نحو مستقبل مشرق!
         </p>
         <SocialLinks />
+        <RadioPlayer />
         <Assistant />
       </main>
       <Footer />
