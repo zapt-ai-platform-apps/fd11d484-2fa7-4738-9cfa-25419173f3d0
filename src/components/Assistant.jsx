@@ -38,6 +38,9 @@ function Assistant() {
 
     recognition.onend = () => {
       setIsRecording(false);
+      if (inputValue()) {
+        handleSendQuery();
+      }
     };
 
     recognition.start();
@@ -109,9 +112,9 @@ function Assistant() {
           <button
             onClick={handleSendQuery}
             class={`flex-1 px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer ${
-              isLoading() ? 'opacity-50 cursor-not-allowed' : ''
+              isLoading() || !inputValue() ? 'opacity-50 cursor-not-allowed' : ''
             }`}
-            disabled={isLoading()}
+            disabled={isLoading() || !inputValue()}
           >
             <Show when={!isLoading()} fallback="...جاري الإرسال">
               إرسال
