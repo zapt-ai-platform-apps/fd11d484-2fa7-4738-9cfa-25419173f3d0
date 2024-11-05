@@ -1,4 +1,5 @@
 import SocialLinks from './components/SocialLinks';
+import Assistant from './components/Assistant';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           مرحبًا بك في <strong>"تبادل المعلومات التقنية"</strong>! اكتشف عالم التقنية، تواصل، وتعلم معنا. انضم الآن وانطلق نحو مستقبل مشرق!
         </p>
         <SocialLinks />
+        <Assistant />
       </main>
     </div>
   );
